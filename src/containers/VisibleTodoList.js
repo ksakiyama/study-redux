@@ -11,24 +11,31 @@ const getVisibleTodos = (todos, filter) => {
     case "SHOW_ACTIVE":
       return todos.filter(t => !t.completed);
     default:
-      return;
+      return todos;
   }
 };
 
+// reduxのお決まり
+// stateを受け取って、どのようにpropsへ渡すか定義する
 const mapStateToProps = state => {
   return {
     todos: getVisibleTodos(state.todos, state.visibilityFilter)
   };
 };
 
+// こちらもお決まり
+// dispatchをonTodoClickというイベントに紐付ける
+// もう少しわかりやすく書くと、actionをpropsに紐づけできる
 const mapDispatchToProps = dispatch => {
   return {
     onTodoClick: id => {
+      // actionに定義されているtoggleTodoを呼ぶ
       dispatch(toggleTodo(id));
     }
   };
 };
 
+// TodoListコンポーネントと振る舞いを結合、connectする
 const VisibleTodoList = connect(
   mapStateToProps,
   mapDispatchToProps

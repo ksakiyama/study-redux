@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// onClickは親のTodoListから渡してもらったもの
+// さらにTodoListはVisibleTodoListでdispatchされてactionを呼ぶ
 const Todo = ({ onClick, completed, text }) => (
   <li
     onClick={onClick}

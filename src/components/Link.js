@@ -11,7 +11,7 @@ const Link = ({ active, children, onClick }) => {
       href="dummy"
       onClick={e => {
         e.preventDefault();
-        onClick();
+        onClick(); // onClickはcontainerで定義される
       }}
     >
       {children}

@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Todo from "./Todo";
 
+// 公式ではindexで設定しているが、本当に正しくするならtodo.idを使うべき
 const TodoList = ({ todos, onTodoClick }) => (
   <ul>
     {todos.map((todo, index) => (
-      <Todo key={index} {...todo} onClick={() => onTodoClick(index)} />
+      // <Todo key={index} {...todo} onClick={() => onTodoClick(index)} />
+      <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
     ))}
   </ul>
 );
